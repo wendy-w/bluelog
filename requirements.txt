@@ -27,7 +27,7 @@ wtforms==2.2.1
 # dev
 coverage==5.0.4
 entrypoints==0.3
-faker==4.0.2
+faker
 flake8==3.7.9
 mccabe==0.6.1
 pathtools==0.1.2
