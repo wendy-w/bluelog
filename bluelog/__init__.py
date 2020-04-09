@@ -13,6 +13,7 @@ import click
 from flask import Flask, render_template, request
 from flask_login import current_user
 from flask_sqlalchemy import get_debug_queries
+from flask_sslify import SSLify
 from flask_wtf.csrf import CSRFError
 
 from bluelog.blueprints.admin import admin_bp
@@ -30,7 +31,11 @@ def create_app(config_name=None):
         config_name = os.getenv('FLASK_CONFIG', 'development')
 
     app = Flask('bluelog')
+    with app.app_context():
+        sslify = SSLify()
+        sslify.init_app(app)
     app.config.from_object(config[config_name])
+
 
     register_logging(app)
     register_extensions(app)
@@ -87,6 +92,7 @@ def register_extensions(app):
     moment.init_app(app)
     toolbar.init_app(app)
     migrate.init_app(app, db)
+
 
 
 def register_blueprints(app):
