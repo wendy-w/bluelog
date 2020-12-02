@@ -60,8 +60,8 @@ class TestingConfig(BaseConfig):
 
 
 class ProductionConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', prefix + os.path.join(basedir, 'data.db'))
-    # SQLALCHEMY_DATABASE_URI = 'mysql://root:zxc1015zxc@localhost/blogdb'
+    # SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', prefix + os.path.join(basedir, 'data.db'))
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:zxc1015zxc@localhost/blogdb'
 
 
 config = {
